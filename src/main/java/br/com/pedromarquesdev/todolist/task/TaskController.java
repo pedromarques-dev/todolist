@@ -20,7 +20,6 @@ public class TaskController {
 
 	@PostMapping("/")
 	public ResponseEntity create(@RequestBody TaskModel taskModel, HttpServletRequest request) {
-		System.out.println("Chegou no controller ");
 		var idUser =  request.getAttribute("idUser");
 		taskModel.setIdUser((UUID) idUser);
 
@@ -42,7 +41,6 @@ public class TaskController {
 
 	@GetMapping("/")
 	public List<TaskModel> list(HttpServletRequest request) {
-		System.out.println("CHEGOU NO LIST");
 		var idUser =  request.getAttribute("idUser");
 		var tasks = this.taskRepository.findByIdUser((UUID) idUser);
 		for (TaskModel task: tasks) {
